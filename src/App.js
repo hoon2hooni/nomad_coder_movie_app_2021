@@ -1,69 +1,28 @@
 import React from "react";
 import propTypes from 'prop-types';
 
-function Food({ name, flavor, rating}){
-  return (
-    <div>
-      <h1> I like {name} </h1>
-      <h3> I like {flavor}</h3>
-      <h4> rating is {rating} </h4>
-    </div>
-  ) ;
-}
+//필수과정 
+class App extends React.Component{
+  state ={
+    count: 0
+  };
+  add = () => {
+    this.setState(current => ({ count: current.count + 1}));
+  };
+  minus = () => {
+    this.setState(current => ({count: current.count - 1}));
+  };
+  //render 을 바꿔주어야 행
+  //setState를 하면 view가 다시 refresh됨
+  //setState를 안해주면 render function 다시 못불러ㅗㅇㅁ
 
-Food.propTypes ={
-  name: propTypes.string.isRequired,
-  flavor: propTypes.string.isRequired,
-  rating: propTypes.string.isRequired
-}
-
-const foodILike = [
-  {
-    name: "kimchi",
-    flavor: "spicy",
-    rating: 5
-  },
-  {
-    name: "samgyupsal",
-    flavor: "spicy",
-    rating: 5
-  },
-  {
-    name: "kimchi",
-    flavor: "spicy",
-    rating: 5
-  },
-  {
-    name: "kimchi",
-    flavor: "spicy",
-    rating: 5
-  },
-  {
-    name: "kimchi",
-    flavor: "spicy",
-    rating: 5
-  }
-];
-
-//우리는 꼐속 reuse를 할수 있어
-
-function App() {
-  return (
-  <div>
-    <h1>HELLOO!!!!</h1>
-
-    {/* name과 적음 */}
-    {/* food component에 prop name kimch를 줌 */} 
-    {/* prop  = property야 */}
-    {foodILike.map(dish => (
-      <Food name = {dish.name} 
-            flavor = {dish.flavor}
-            rating = {dish.rating}/>
-      ))}
-    
-    
-
-  </div>);
-}
+  render() {
+    return (<div>
+      <h1> The number is: {this.state.count}</h1>
+      <button onClick ={this.add}>Add</button>
+      <button onClick ={this.minus}>Minus</button>
+    </div>);
+  };
+};
 
 export default App;
