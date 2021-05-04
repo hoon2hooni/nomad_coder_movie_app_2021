@@ -1,29 +1,47 @@
 import React from "react";
+import propTypes from 'prop-types';
 
-function Food({ name }){
-  return <h1> I like {name} </h1> ;
+function Food({ name, flavor, rating}){
+  return (
+    <div>
+      <h1> I like {name} </h1>
+      <h3> I like {flavor}</h3>
+      <h4> rating is {rating} </h4>
+    </div>
+  ) ;
+}
+
+Food.propTypes ={
+  name: propTypes.string.isRequired,
+  flavor: propTypes.string.isRequired,
+  rating: propTypes.string.isRequired
 }
 
 const foodILike = [
   {
     name: "kimchi",
-    flavor: "spicy"
+    flavor: "spicy",
+    rating: 5
   },
   {
     name: "samgyupsal",
-    flavor: "spicy"
+    flavor: "spicy",
+    rating: 5
   },
   {
     name: "kimchi",
-    flavor: "spicy"
+    flavor: "spicy",
+    rating: 5
   },
   {
     name: "kimchi",
-    flavor: "spicy"
+    flavor: "spicy",
+    rating: 5
   },
   {
     name: "kimchi",
-    flavor: "spicy"
+    flavor: "spicy",
+    rating: 5
   }
 ];
 
@@ -38,7 +56,9 @@ function App() {
     {/* food component에 prop name kimch를 줌 */} 
     {/* prop  = property야 */}
     {foodILike.map(dish => (
-      <Food name = {dish.name}/>
+      <Food name = {dish.name} 
+            flavor = {dish.flavor}
+            rating = {dish.rating}/>
       ))}
     
     
