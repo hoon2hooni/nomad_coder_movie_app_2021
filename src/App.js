@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Movie from "./Movie";
+import "./App.css";
 import propTypes from 'prop-types';
 
 //필수과정 
@@ -22,7 +23,6 @@ class App extends React.Component{
   componentDidMount(){
     this.getMovies();
   }
-  
 
   render() { 
     const { isLoading, movies } = this.state;
@@ -30,7 +30,7 @@ class App extends React.Component{
       <section className ="container">
         {isLoading ? (
           <div className ="loader">
-            <span class = "loader__text">Loading...</span>
+            <span className = "loader__text">Loading...</span>
           </div>
         ) : (
           <div className = "movies">
@@ -41,7 +41,8 @@ class App extends React.Component{
                 year={movie.year} 
                 title={movie.title} 
                 summary={movie.summary} 
-                poster={movie.movie_cover_image}
+                poster={movie.medium_cover_image}
+                genres={movie.genres}
               />
             ))}
           </div>
